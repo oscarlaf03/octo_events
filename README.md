@@ -1,5 +1,22 @@
 # README
 
+## Aproach
+[ ] make it work
+[ ] make it right
+[ ] make it go fast
+
+## TODO
+- [X] Setup base project
+- [ ] Setup external webhook config
+- [ ] Receive webhooks
+- [ ] Persists events
+- [ ] Expose Events
+- [ ] Add Security
+
+
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
