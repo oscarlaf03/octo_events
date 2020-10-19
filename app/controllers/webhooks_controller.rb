@@ -5,9 +5,10 @@ class WebhooksController < ApplicationController
     #   skip_before_action :authenticate_user!, only:[:receive]
 
     def receive
-    body = JSON.parse(request.body.read)
+        raw =  request.body.read
+    body = JSON.parse(raw)
         if body
-            puts body
+            puts raw
             head :ok
             "message received succesfully"
         else
