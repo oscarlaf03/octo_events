@@ -9,7 +9,7 @@ class WebhooksController < ApplicationController
         body = JSON.parse(raw)
         if body
             puts "\n\n\n*********PRINTING********\n\n\n"
-            puts treat_body(body)
+            puts raw
             puts "\n\n\n*********END PRINT********\n\n\n"
 
             head :ok
@@ -25,7 +25,7 @@ class WebhooksController < ApplicationController
             action: body["action"] || "no action",
             sender: body["sender"] || "no sender",
             repository: body["repository"] || "no repository",
-            organization: body['organization'] || "no organization",
+            organization: body["organization"] || "no organization",
             installation: body["installation"] || "no installation"
         }
 
