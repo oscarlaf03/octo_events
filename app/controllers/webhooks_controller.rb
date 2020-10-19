@@ -8,7 +8,10 @@ class WebhooksController < ApplicationController
         raw =  request.body.read
         body = JSON.parse(raw)
         if body
+            puts "\n\n\n**********PRINTING********\n\n\n"
             puts treat_body(body)
+            puts "\n\n\n**********END PRINT********\n\n\n"
+
             head :ok
             "message received succesfully"
         else
@@ -22,7 +25,7 @@ class WebhooksController < ApplicationController
             action: body["action"] || "no action",
             sender: body["sender"] || "no sender",
             repository: body["repository"] || "no repository",
-            organization: body['organiaztion'] || "no organization",
+            organization: body['organization'] || "no organization",
             installation: body["installation"] || "no installation"
         }
 
