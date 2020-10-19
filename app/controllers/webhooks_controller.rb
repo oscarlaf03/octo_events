@@ -8,9 +8,9 @@ class WebhooksController < ApplicationController
         raw =  request.body.read
         body = JSON.parse(raw)
         if body
-            puts "\n\n\n**********PRINTING********\n\n\n"
+            puts "\n\n\n*********PRINTING********\n\n\n"
             puts treat_body(body)
-            puts "\n\n\n**********END PRINT********\n\n\n"
+            puts "\n\n\n*********END PRINT********\n\n\n"
 
             head :ok
             "message received succesfully"
