@@ -14,6 +14,18 @@
 - [ ] Add Security
 
 
+## Specs
+
+### Add the ngrok host to the config env
+For example if your ngrok host is: "43054d11af0.ngrok.io"
+
+Then before starting the rails development server type:
+
+```
+export NGROK_HOST=43054d11af0.ngrok.io
+```
+
+
 
 
 
