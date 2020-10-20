@@ -1,20 +1,22 @@
 class WebhookInterpreter
+    require 'json'
+    require 'net/http'
 
-    def initialize(body)
-        @body = body
+    def initialize(request)
+        @event_type_key = 'X-GitHub-Eveny'
+        @request = request
+        @body = JSON.parse(@request.body.read)
+        @headers = request.headers
+        @readable = request.key? @event_type_key
+        @event_type = request.headers[@event_type_key]
     end
 
     def standard_event?
-        @body.keys.include? 'action' 
+        @event_type != 'push' && @readable
     end
 
     def push_event?
-        standard = standard_event?
-        keys = @body.keys
-        has_ref = keys.include? 'ref'
-        has_before = keys.include? 'before'
-        has_after = keys.include? 'after'
-        !standard && has_ref && has_before && has_after
+        @readable && @event_type == 'push'
     end
 
     def should_interpret?
