@@ -10,6 +10,7 @@ class WebhooksController < ApplicationController
         interpreter = WebhookInterpreter.new(request)
         # event_type = request.headers['X-GitHub-Event']
         # parsed_header = JSON.parse(request.headers)
+        pry
         if body
             # interpet_body(body)
             print_data(interpreter.readable)
