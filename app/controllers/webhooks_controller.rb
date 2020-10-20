@@ -9,13 +9,10 @@ class WebhooksController < ApplicationController
         raw =  request.body.read
         body = JSON.parse(raw)
         interpreter = WebhookInterpreter.new(request)
+        print_data(interpreter.readable)
         interpreter.call
-        # event_type = request.headers['X-GitHub-Event']
-        # parsed_header = JSON.parse(request.headers)
 
         if body
-            # interpet_body(body)
-            # print_data(interpreter.readable)
             head :ok
             "message received succesfully"
         else
@@ -25,14 +22,6 @@ class WebhooksController < ApplicationController
 
     private 
 
-    def interpet_body(body)
-        interpreter = WebhookInterpreter.new(body)
-        puts '**INTERPRETER** is standard_event?  :'
-        puts interpreter.standard_event?
-        puts '**INTERPRETER** is push_event?  :'
-        puts interpreter.push_event?
-    end
-    
 
     def print_data(data)
         puts "\n\n\n*********PRINTING********\n\n\n"
