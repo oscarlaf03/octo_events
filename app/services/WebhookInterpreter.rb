@@ -33,8 +33,6 @@ class WebhookInterpreter
         @readable ? @body['repository']['id'] : nil
     end
 
-    def get_se
-
     def save_event
         if @readable
             @sender = Sender.find_by github_id: sender_github_id || Sender.new(github_id: sender_github_id, username: @body['sender']['login'])
@@ -49,6 +47,7 @@ class WebhookInterpreter
             @event.repository = @repository
             @event.sender = @sender
             @event.save
+
         end
     end
 end
