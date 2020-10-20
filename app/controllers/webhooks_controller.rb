@@ -1,7 +1,7 @@
 class WebhooksController < ApplicationController
     require 'json'
     require 'net/http'
-    require 'pry'
+    # require 'pry'
     #   skip_before_action :verify_authenticity_token, only:[:receive]
     #   skip_before_action :authenticate_user!, only:[:receive]
 
@@ -11,8 +11,7 @@ class WebhooksController < ApplicationController
         interpreter = WebhookInterpreter.new(request)
         # event_type = request.headers['X-GitHub-Event']
         # parsed_header = JSON.parse(request.headers)
-        binding.pry
-        
+
         if body
             # interpet_body(body)
             print_data(interpreter.readable)

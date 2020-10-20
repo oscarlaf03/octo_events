@@ -1,14 +1,15 @@
 class WebhookInterpreter
     require 'json'
     require 'net/http'
-    attr_reader :event_type, :body, :headers, :readable, :event_type
+    attr_reader :event_type, :body, :headers,
+    :readable, :event_type, :event_type_key
 
     def initialize(request)
-        @event_type_key = 'X-GitHub-Eveny'
+        @event_type_key = 'X-GitHub-Event'
         @request = request
         @body = JSON.parse(@request.body.read)
         @headers = request.headers
-        @readable = request.key? @event_type_key
+        @readable = request.headers.key? @event_type_key
         @event_type = request.headers[@event_type_key]
     end
 
