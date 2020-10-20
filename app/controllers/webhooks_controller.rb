@@ -9,12 +9,13 @@ class WebhooksController < ApplicationController
         raw =  request.body.read
         body = JSON.parse(raw)
         interpreter = WebhookInterpreter.new(request)
+        interpreter.call
         # event_type = request.headers['X-GitHub-Event']
         # parsed_header = JSON.parse(request.headers)
 
         if body
             # interpet_body(body)
-            print_data(interpreter.readable)
+            # print_data(interpreter.readable)
             head :ok
             "message received succesfully"
         else

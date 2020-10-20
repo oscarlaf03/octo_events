@@ -13,6 +13,10 @@ class WebhookInterpreter
         @event_type = request.headers[@event_type_key]
     end
 
+    def call
+        save_event
+    end
+
     def standard_event?
         @event_type != 'push' && @readable
     end
@@ -21,12 +25,14 @@ class WebhookInterpreter
         @readable && @event_type == 'push'
     end
 
-    def should_interpret?
-        standard_event? || push_event?
+    def save_event
+        if standard_event?
+            @event = Event.new(type:@event_type, action:@body['action'])
+        elsif push_event?
+            @event = Event.new(type:@event_type, action:@event)
+        else 
+            @event = nil
+        end
+        @event.save if @event
     end
-
-
-
-
-
 end
