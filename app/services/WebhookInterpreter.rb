@@ -29,7 +29,7 @@ class WebhookInterpreter
         if standard_event?
             @event = Event.new(type:@event_type, action:@body['action'])
         elsif push_event?
-            @event = Event.new(type:@event_type, action:@event)
+            @event = Event.new(type:@event_type, action:@event_type)
         else 
             @event = nil
         end

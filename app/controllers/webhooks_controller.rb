@@ -32,16 +32,7 @@ class WebhooksController < ApplicationController
         puts '**INTERPRETER** is push_event?  :'
         puts interpreter.push_event?
     end
-    def treat_body(body)
-        {
-            action: body["action"] || "no action",
-            sender: body["sender"] || "no sender",
-            repository: body["repository"] || "no repository",
-            organization: body["organization"] || "no organization",
-            installation: body["installation"] || "no installation"
-        }
-
-    end
+    
 
     def print_data(data)
         puts "\n\n\n*********PRINTING********\n\n\n"
